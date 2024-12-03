@@ -102,6 +102,17 @@ export class UserService {
                 email: true
             }
         })
- }
+    }
+    
+    async getIntervalUser(userId: string) {
+        return this.prisma.user.findUnique({
+            where: {
+                id: userId
+            },
+            select: {
+                intervalCount: true
+            }
+        })
+    }
 }
 

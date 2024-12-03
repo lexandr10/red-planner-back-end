@@ -5,6 +5,7 @@ import { TimeBlockService } from "./time-block.service";
 import { TimeBlockDto } from "./dto/time-block.tdo";
 import { UpdateOrderDto } from "./dto/update-order.dto";
 
+
 @Controller('user/time-blocks')
 
 export class TimeBlockController {
@@ -23,6 +24,13 @@ constructor(private readonly timeBlockService: TimeBlockService){}
     async create(@Body() dto: TimeBlockDto, @CurrentUser("id") userId: string) {
         return this.timeBlockService.createTimeBlock(dto, userId)
     }
+    @UsePipes(new ValidationPipe())
+	@HttpCode(200)
+	@Put('update-order')
+	@Auth()
+	updateOrder(@Body() updateOrderDto: UpdateOrderDto) {
+		return this.timeBlockService.updateOrder(updateOrderDto.ids)
+	}
 
     @UsePipes(new ValidationPipe())
     @Put(":id")
@@ -37,14 +45,6 @@ constructor(private readonly timeBlockService: TimeBlockService){}
     @Auth()
     async delete(@Param('id') id: string, @CurrentUser("id") userId: string) {
         return this.timeBlockService.deleteTimeBlock(id, userId)
-    }
-    
-    @UsePipes(new ValidationPipe())
-    @HttpCode(200)
-    @Put('update-order')
-    @Auth()
-    async updateOrder(@Body() updateOrderDto: UpdateOrderDto) {
-    return this.timeBlockService.updateOrder(updateOrderDto.ids)
     }
 
 } 

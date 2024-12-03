@@ -30,6 +30,7 @@ export class TimeBlockService {
             }
         })
     }
+  
 
     async updateTimeBlock(dto: Partial<TimeBlockDto>, timeBlockId: string, userId: string) {
         return this.prisma.timeBlock.update({
@@ -51,12 +52,15 @@ export class TimeBlockService {
         })
     }
     
-    async updateOrder(ids: string[]) {
-        return this.prisma.$transaction(
-            ids.map((id, order) => this.prisma.timeBlock.update({
-                where: {id},
-                data: {order}
-            }))
-        )
-    }
+      async updateOrder(ids: string[]) {
+		return this.prisma.$transaction(
+			ids.map((id, order) =>
+				this.prisma.timeBlock.update({
+					where: { id },
+					data: { order }
+				})
+			)
+		)
+	}
+  
 }

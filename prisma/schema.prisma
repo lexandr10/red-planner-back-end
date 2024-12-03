@@ -59,10 +59,10 @@ model PomodoroSession {
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("update_at")
 
-  isCompeted    Boolean?        @default(false) @map("is_completed")
-  user          User            @relation(fields: [userId], references: [id])
-  userId        String          @map("user_id")
-  round PomodoroRound[]
+  isCompeted Boolean?        @default(false) @map("is_completed")
+  user       User            @relation(fields: [userId], references: [id])
+  userId     String          @map("user_id")
+  round      PomodoroRound[]
 
   @@map("pomodoro_session")
 }
@@ -71,7 +71,7 @@ model PomodoroRound {
   id              String          @id @default(cuid())
   createdAt       DateTime        @default(now()) @map("created_at")
   updatedAt       DateTime        @updatedAt @map("update_at")
-  totalSeconds Int @map("total_seconds")
+  totalSeconds    Int             @map("total_seconds")
   isCompeted      Boolean?        @default(false) @map("is_completed")
   pomodoroSession PomodoroSession @relation(fields: [pomodoroId], references: [id], onDelete: Cascade)
   pomodoroId      String          @map("pomodoro_id")
