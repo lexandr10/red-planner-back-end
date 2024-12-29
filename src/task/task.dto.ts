@@ -13,7 +13,7 @@ export class TaskDto {
 
     @IsString()
     @IsOptional()
-    createAt?: string
+    createdAt?: string
 
     @IsEnum(Priority)
     @IsOptional()

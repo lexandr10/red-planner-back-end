@@ -9,13 +9,14 @@ async function bootstrap() {
   app.use(coockieParser())
   app.enableCors(
     {
-      origin: ['http://localhost:3000'],
+      origin: ['http://localhost:3000', 'https://lexandr10.github.io/red-planner-front-end'],
       credentials: true,
-      exposedHeaders: 'set-cookie'
+      allowedHeaders: ['Content-Type', 'Authorization', 'Set-Cookie'],
+      exposedHeaders: ['Set-Cookie']
     }
   )
 
-
-  await app.listen(3000);
+  const PORT = process.env.PORT || 3001;
+  await app.listen(PORT);
 }
 bootstrap();
