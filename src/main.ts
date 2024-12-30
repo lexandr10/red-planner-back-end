@@ -9,7 +9,7 @@ async function bootstrap() {
   app.use(coockieParser())
   app.enableCors(
     {
-      origin: ['http://localhost:3000', 'https://lexandr10.github.io/red-planner-front-end'],
+      origin: [ "https://red-planner-front-end.onrender.com", "http://localhost:3000"],
       credentials: true,
       allowedHeaders: ['Content-Type', 'Authorization', 'Set-Cookie'],
       exposedHeaders: ['Set-Cookie']
