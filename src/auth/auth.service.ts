@@ -62,7 +62,7 @@ export class AuthService {
             domain: process.env.NODE_ENV === "production" ? "red-planner-front-end.onrender.com" : "localhost",
             expires: expresiIn,
             secure: process.env.NODE_ENV === "production",
-            sameSite: process.env.NODE_ENV === "production" ? "none" : "lax" ,
+            sameSite: process.env.NODE_ENV === "production" ? "lax" : "none" ,
 
         })
     }
@@ -72,7 +72,7 @@ export class AuthService {
             domain: process.env.NODE_ENV === "production" ? "red-planner-front-end.onrender.com" : "localhost",
             expires: new Date(0),
             secure: process.env.NODE_ENV === "production",
-            sameSite: process.env.NODE_ENV === "production" ? "none" : "lax" ,
+            sameSite: process.env.NODE_ENV === "production" ? "lax" : "none",
 
         })
     }
