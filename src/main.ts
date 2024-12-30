@@ -11,8 +11,7 @@ async function bootstrap() {
     {
       origin: [ "https://red-planner-front-end.onrender.com", "http://localhost:3000"],
       credentials: true,
-      allowedHeaders: ['Content-Type', 'Authorization', 'Set-Cookie'],
-      exposedHeaders: ['Set-Cookie']
+      exposedHeaders: 'set-cookie'
     }
   )
 
